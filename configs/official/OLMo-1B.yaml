@@ -2,10 +2,6 @@ run_name: OLMo-1B
 seed: 6198
 dry_run: false
 
-wandb:
-  name: ${run_name}
-  project: olmo-small
-
 model:
   d_model: 2048
   n_heads: 16
@@ -55,7 +51,7 @@ tokenizer:
   identifier: tokenizers/allenai_eleuther-ai-gpt-neox-20b-pii-special.json
   truncate_direction: right
 
-save_folder: ${path.choose:${oc.env:SCRATCH_DIR,no_exist}/checkpoints,/results}/${oc.env:SLURM_JOB_ID,${run_name}}
+save_folder: ./checkpoints/${run_name}
 save_overwrite: false
 # Sharded checkpoints (best for restarts)
 save_interval: 1000
